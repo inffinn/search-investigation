@@ -39,8 +39,8 @@ await test('test5', ['title9901'], ['filter0', 'filter10']);
 await test('test6', ['title10', 'desc']);
 await test('test7', ['title10', 'desc', 'car'], ['filter1', '']);
 
-console.log(`%c average filter: ${(filterTimes.reduce((s, v) => s + v, 0) / filterTimes.length).toFixed(0)}ms`, 'background: red; color:white')
-console.log(`%c average find: ${(findTimes.reduce((s, v) => s + v, 0) / findTimes.length).toFixed(0)}ms`, 'background: blue; color:white')
+console.log(`%c average indexOfSearch: ${(filterTimes.reduce((s, v) => s + v, 0) / filterTimes.length).toFixed(0)}ms`, 'background: red; color:white')
+console.log(`%c average startsWithSearch: ${(findTimes.reduce((s, v) => s + v, 0) / findTimes.length).toFixed(0)}ms`, 'background: blue; color:white')
 
 
 console.time('s')
