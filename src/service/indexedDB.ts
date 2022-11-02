@@ -57,7 +57,7 @@ const getAllWords = (text: string): string[] => {
 }
 db.open();
 
-export const addData = async () => {
+export const fillDb = async () => {
     return db.transaction('rw', db.articles, db.tokens, db.words, function () {
         debugger
         for (let i = 1; i < 100_000; i++) {
@@ -95,7 +95,7 @@ export const addData = async () => {
 }
 
 
-export async function find(prefixes: string[], filters?: string[], count = 100) {
+export async function startsWithSearch(prefixes: string[], filters?: string[], count = 100) {
     return db.transaction('r', db.articles, db.tokens, function* () {
         const hasFilters = !!filters;
         const promises = [
@@ -136,7 +136,7 @@ export async function find(prefixes: string[], filters?: string[], count = 100) 
     })
 }
 
-export const filter = async (prefixes: string[], filters?: string[], count = 100) => {
+export const indexOfSearch = async (prefixes: string[], filters?: string[], count = 100) => {
     const idsWithWeight: { [key: string]: number } = {};
     const weightsWithIds: { [key: string]: string } = {};
     const filteredIds = filters ? new Set(await getFilteredIds(filters)) : null;
